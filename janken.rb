@@ -1,12 +1,18 @@
 class Player
   def hand
     # コンソールを入力待ち状態にし、プレイヤーがコンソールから打ち込んだ値を出力する処理のメソッドの処理をこの中に作成する
-    puts "数字を入力してください。"
-    puts "0: グー"
-    puts "1: チョキ"
-    puts "2: パー"
 
-    return gets().to_i
+
+    array =  [*(0..2)]     
+    i = -1
+    while !array.include?(i)  do
+        puts "数字を入力してください。"
+        puts "0: グー"
+        puts "1: チョキ"
+        puts "2: パー"
+        i = gets().to_i
+    end 
+    return i
   end
 end
 
@@ -26,14 +32,19 @@ class Janken
     hands = ["グー", "チョキ", "パー"]
 
     diff = player_hand - enemy_hand
+    # プレイヤーの値 - Enemyの値が2の時勝ち
     if (diff == 2) then
         puts "相手の手は#{hands[enemy_hand]}です。あなたの勝ちです"
+    # プレイヤーの値 - Enemyの値が1の時負け
     elsif (diff == 1) then
         puts "相手の手は#{hands[enemy_hand]}です。あなたの負けです"
+    # プレイヤーの値 - Enemyの値が0のときあいこ
     elsif (diff == 0) then
         puts "相手の手は#{hands[enemy_hand]}です。もう一度じゃんけんをお願いします"
+    # プレイヤーの値 - Enemyの値が-1のとき勝ち
     elsif (diff == -1) then
         puts "相手の手は#{hands[enemy_hand]}です。あなたの勝ちです"
+    # プレイヤーの値 - Enemyの値が-2のとき負け
     else
         puts "相手の手は#{hands[enemy_hand]}です。あなたの負けです"
     end
