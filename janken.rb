@@ -41,6 +41,10 @@ class Janken
     # プレイヤーの値 - Enemyの値が0のときあいこ
     elsif (diff == 0) then
         puts "相手の手は#{hands[enemy_hand]}です。もう一度じゃんけんをお願いします"
+        player = Player.new
+        enemy = Enemy.new
+        # 下記の記述で、ジャンケンメソッドが起動される
+        pon(player.hand, enemy.hand)
     # プレイヤーの値 - Enemyの値が-1のとき勝ち
     elsif (diff == -1) then
         puts "相手の手は#{hands[enemy_hand]}です。あなたの勝ちです"
