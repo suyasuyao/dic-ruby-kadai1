@@ -6,7 +6,7 @@ class Player
     puts "1: チョキ"
     puts "2: パー"
 
-    return gets()
+    return gets().to_i
   end
 end
 
@@ -23,7 +23,20 @@ class Janken
     # その際、あいこもしくはグー、チョキ、パー以外の値入力時には、もう一度ジャンケンをする
     # 相手がグー、チョキ、パーのうち、何を出したのかも表示させる
 
+    hands = ["グー", "チョキ", "パー"]
 
+    diff = player_hand - enemy_hand
+    if (diff == 2) then
+        puts "相手の手は#{hands[enemy_hand]}です。あなたの勝ちです"
+    elsif (diff == 1) then
+        puts "相手の手は#{hands[enemy_hand]}です。あなたの負けです"
+    elsif (diff == 0) then
+        puts "相手の手は#{hands[enemy_hand]}です。もう一度じゃんけんをお願いします"
+    elsif (diff == -1) then
+        puts "相手の手は#{hands[enemy_hand]}です。あなたの勝ちです"
+    else
+        puts "相手の手は#{hands[enemy_hand]}です。あなたの負けです"
+    end
   end
 end
 
