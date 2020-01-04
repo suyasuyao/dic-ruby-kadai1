@@ -3,16 +3,27 @@ class Player
     # コンソールを入力待ち状態にし、プレイヤーがコンソールから打ち込んだ値を出力する処理のメソッドの処理をこの中に作成する
 
 
+    puts "数字を入力してください。"
+    puts "0: グー"
+    puts "1: チョキ"
+    puts "2: パー"
+
+    i = getsHand
     array =  [*(0..2)]     
-    i = -1
+
     while !array.include?(i)  do
-        puts "数字を入力してください。"
-        puts "0: グー"
-        puts "1: チョキ"
-        puts "2: パー"
-        i = gets().to_i
+        puts "0〜2の数字を入力してください。"
+        i = getsHand
     end 
     return i
+  end
+
+  def getsHand
+    begin
+        return Integer(gets())
+    rescue
+        return -1
+    end
   end
 end
 
